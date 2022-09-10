@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Deletar Contato";
+}
+
+<div class="text-center">
+
+    <h1>Deletar Contato</h1>
+
+</div>
+<div class="row g-3 align-items-center">
+    <form>
+        <div class="form-group col-auto">
+            <label class="form-control" placeholder="Nome" >Nome</label>
+        </div>
+
+        <div class="form-group col-auto">
+            <label type="text" class="form-control" placeholder="Email">Email</label>
+        </div>
+
+        <div class="form-group col-auto">
+            <label type="text" class="form-control" placeholder="Celular" >Celular</label>
+        </div>
+
+        <a type="submit" role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Index">Cancelar</a>
+        <a type="submit" role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="Apagar">Confirmar</a>
+
+    </form>
+</div>
