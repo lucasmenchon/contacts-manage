@@ -1,4 +1,5 @@
 ﻿using DawnPoets.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DawnPoets.Repositorio
 {
@@ -6,5 +7,10 @@ namespace DawnPoets.Repositorio
     {
         ContatoModel Adicionar(ContatoModel contato);
         List<ContatoModel> BuscarTodos();
+        ContatoModel BuscarPorId(int id);
+        ContatoModel Atualizar(ContatoModel contato);
+        bool Apagar(int id);
+
+
     }
 }

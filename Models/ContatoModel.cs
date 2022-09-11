@@ -1,13 +1,20 @@
-﻿namespace DawnPoets.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DawnPoets.Models
 {
     public class ContatoModel
     {
         public int Id { get; set; }
 
-        public string? Nome { get; set; }
+        [Required(ErrorMessage = "Digite o nome do contato.")]
+        public string Nome { get; set; }
 
-        public string? Email { get; set; }
+        [Required(ErrorMessage = "Digite o email do contato.")]
+        [EmailAddress(ErrorMessage = "Email informado inválido")]
+        public string Email { get; set; }
 
-        public string? Celular { get; set; }
+        [Required(ErrorMessage = "Digite o celular do contato.")]
+        [Phone(ErrorMessage = "Celular informado inválido")]
+        public string Celular { get; set; }
     }
 }

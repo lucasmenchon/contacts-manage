@@ -1,6 +1,8 @@
 ﻿using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.WebEncoders.Testing;
+using System.Text.Encodings.Web;
 
 namespace DawnPoets.Controllers
 {
@@ -10,7 +12,7 @@ namespace DawnPoets.Controllers
 
         public IActionResult Index()
         {
-            var contatos = _contatoRepositorio.BuscarTodos();
+            List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
             return View(contatos);
         }
 
@@ -27,18 +29,38 @@ namespace DawnPoets.Controllers
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
-            _contatoRepositorio.Adicionar(contato);
+            if (ModelState.IsValid)
+            {
+                _contatoRepositorio.Adicionar(contato);
+                return RedirectToAction("Index");
+            }
+            return View(contato);
+        }
+
+        public IActionResult Editar(int id)
+        {
+            ContatoModel contato = _contatoRepositorio.BuscarPorId(id);
+            return View(contato);
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(ContatoModel contato)
+        {
+            _contatoRepositorio.Atualizar(contato);
             return RedirectToAction("Index");
         }
 
-        public IActionResult Editar()
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            ContatoModel contato = _contatoRepositorio.BuscarPorId(id);
+            //TempData["msgDel"] = $"<script>window.alert('{contato.Nome}')</script>";
+            return View(contato);
         }
 
-        public IActionResult ApagarConfirmacao()
+        public IActionResult Apagar(int id)
         {
-            return View();
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
         }
 
     }

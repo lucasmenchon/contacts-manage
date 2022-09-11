@@ -8,10 +8,10 @@ namespace DawnPoets.Data
     {
         public BancoContext (DbContextOptions<BancoContext> options) : base(options)
         {
-            
+          
         }
 
-        public DbSet<ContatoModel> Contatos { get; set; }
+        public DbSet<ContatoModel>? Contatos { get; set; }
 
     }
 }

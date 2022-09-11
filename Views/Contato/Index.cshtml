@@ -1,4 +1,5 @@
 ﻿@model List<ContatoModel>
+@Html.Raw(TempData["msgDel"])
 @{
     ViewData["Title"] = "Lista de Contatos";
 }
@@ -10,35 +11,37 @@
     <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Criar">Add Novo Contato</a>
 </div>
 <hr />
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Celular</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (ContatoModel contatos in Model)
+<div class="table-responsive">
+    <table class="table table-bordered border-dark">
+        <thead>
+            <tr>
+                @*<th scope="col">#</th>*@
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Celular</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
             {
-                <tr>
-                    <th scope="row">@contatos.Id</th>
-                    <th>@contatos.Nome</th>
-                    <th>@contatos.Email</th>
-                    <th>@contatos.Celular</th>
-                    <th>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a role="button" class="btn btn-sm btn-info" asp-controller="Contato" asp-action="Editar" asp-route-id="@contatos.Id">Editar</a>
-                            <a role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao" asp-route-id="nome_@contatos.Nome-id_@contatos.Id">Deletar</a>
-                        </div>
-                    </th>
-                </tr>
+                foreach (ContatoModel contatos in Model)
+                {
+                    <tr>
+                        @*<td>@contatos.Id</td>*@
+                        <td>@contatos.Nome</td>
+                        <td>@contatos.Email</td>
+                        <td>@contatos.Celular</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-sm btn-secondary" asp-controller="Contato" asp-action="Editar" asp-route-id="@contatos.Id">Editar</a>
+                                <a role="button" class="btn btn-sm btn-danger btn-" asp-controller="Contato" asp-action="ApagarConfirmacao" asp-route-id="@contatos.Id">Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
 
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
