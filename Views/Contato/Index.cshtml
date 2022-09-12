@@ -12,14 +12,13 @@
 </div>
 <hr />
 <div class="table-responsive">
-    <table class="table table-bordered border-dark">
+    <table class="table-sm border-dark">
         <thead>
             <tr>
-                @*<th scope="col">#</th>*@
+                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Celular</th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +27,7 @@
                 foreach (ContatoModel contatos in Model)
                 {
                     <tr>
-                        @*<td>@contatos.Id</td>*@
+                        <td>@contatos.Id</td>
                         <td>@contatos.Nome</td>
                         <td>@contatos.Email</td>
                         <td>@contatos.Celular</td>

@@ -59,9 +59,10 @@ namespace DawnPoets.Repositorio
             contatoDB.Email = contato.Email;
             contatoDB.Celular = contato.Celular;
 
-            if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Update(contatoDB);
+            if (_context.Contatos != null && _context.Contatos.Any() && contatoDB.Id == contato.Id) _context.Contatos.Update(contatoDB);
 
             _context.SaveChanges();
+
             return contatoDB;
         }
 

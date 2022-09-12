@@ -46,8 +46,21 @@ namespace DawnPoets.Controllers
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-            _contatoRepositorio.Atualizar(contato);
-            return RedirectToAction("Index");
+
+            ContatoModel lcontato = _contatoRepositorio.BuscarPorId(contato.Id);
+            if (lcontato.Id != contato.Id)
+            {
+                TempData["notexist"] = "<p class='text-danger'>Este usuário não existe para ser atualizado.</p>";
+                return View("Editar");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _contatoRepositorio.Atualizar(contato);
+                return RedirectToAction("Index");
+            }
+
+            return View("Editar", contato);
         }
 
         public IActionResult ApagarConfirmacao(int id)
