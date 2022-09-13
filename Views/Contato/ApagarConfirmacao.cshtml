@@ -6,13 +6,12 @@
 
 <div class="text-center">
 
-    <h1>Deletar Contato @Model.Nome ?</h1>
-
+    <h1>Deletar o Contato @Model.Nome ?</h1>
+    @Html.Raw(TempData["notexist"])
 </div>
 <div class="row g-3 align-items-center">
 
-
-        <a type="submit" role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Index">Cancelar</a>
-        <a type="submit" role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>
+    <a type="submit" role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>
+    <a type="submit" role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Index">Cancelar</a>
 
 </div>

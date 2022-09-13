@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
 
 namespace DawnPoets.Repositorio
 {
@@ -30,9 +32,9 @@ namespace DawnPoets.Repositorio
 
         public List<ContatoModel> BuscarTodos()
         {
-            List<ContatoModel> contatoList = new List<ContatoModel>();
+            List<ContatoModel> contatosList = new List<ContatoModel>();
 
-            return _context.Contatos != null && _context.Contatos.Any() ? _context.Contatos.ToList() : contatoList;
+            return _context.Contatos != null && _context.Contatos.Any() ? _context.Contatos.ToList() : contatosList;
         }
 
         public ContatoModel BuscarPorId(int id)
@@ -40,10 +42,12 @@ namespace DawnPoets.Repositorio
             ContatoModel contatoModel = new ContatoModel();
 
             if (_context.Contatos != null && _context.Contatos.Any())
+            {
                 foreach (ContatoModel contato in _context.Contatos)
                 {
                     if (contato.Id == id) contatoModel = contato;
                 }
+            }
 
             return contatoModel;
         }
@@ -59,7 +63,7 @@ namespace DawnPoets.Repositorio
             contatoDB.Email = contato.Email;
             contatoDB.Celular = contato.Celular;
 
-            if (_context.Contatos != null && _context.Contatos.Any() && contatoDB.Id == contato.Id) _context.Contatos.Update(contatoDB);
+            if (_context.Contatos != null && _context.Contatos.Any() /*&& contatoDB.Id == contato.Id*/) _context.Contatos.Update(contatoDB);
 
             _context.SaveChanges();
 
@@ -75,6 +79,7 @@ namespace DawnPoets.Repositorio
             if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Remove(contatoDB);
 
             _context.SaveChanges();
+
             return true;
         }
     }

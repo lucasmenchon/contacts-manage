@@ -14,7 +14,5 @@ namespace DawnPoets.Repositorio
         ContatoModel Atualizar(ContatoModel contato);
 
         bool Apagar(int id);
-
-
     }
 }

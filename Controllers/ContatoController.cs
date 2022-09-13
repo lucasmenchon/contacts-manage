@@ -72,6 +72,13 @@ namespace DawnPoets.Controllers
 
         public IActionResult Apagar(int id)
         {
+            ContatoModel contatoDelete = new ContatoModel() { Id = id };
+            if (contatoDelete.Id == 0)
+            {
+                TempData["notexist"] = "<p class='text-danger'>Este usuário não existe para ser deletado.</p>";
+                return View("ApagarConfirmacao", contatoDelete);
+            }
+
             _contatoRepositorio.Apagar(id);
             return RedirectToAction("Index");
         }

@@ -830,11 +830,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas\\source\\repos\\DawnPoets\\DawnPoets\\DawnPoets.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas\\source\\repos\\contacts-project-aspnet\\DawnPoets\\DawnPoets.csproj",
       "projectName": "DawnPoets",
-      "projectPath": "C:\\Users\\Lucas\\source\\repos\\DawnPoets\\DawnPoets\\DawnPoets.csproj",
+      "projectPath": "C:\\Users\\Lucas\\source\\repos\\contacts-project-aspnet\\DawnPoets\\DawnPoets.csproj",
       "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas\\source\\repos\\DawnPoets\\DawnPoets\\obj\\",
+      "outputPath": "C:\\Users\\Lucas\\source\\repos\\contacts-project-aspnet\\DawnPoets\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
