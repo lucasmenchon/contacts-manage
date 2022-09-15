@@ -4,43 +4,77 @@
     ViewData["Title"] = "Lista de Contatos";
 }
 
+<div id="contactView">
+    <div class="row">
+        <div class="col"><h1 class="display-4">Lista de Contatos</h1></div>
+        
+        @if (TempData["MsgSuccess"] != null)
+        {
+            <div class="alert alert-success col-4 text-center" role="alert" v-show="alertDiv">
+                <button type="button" class="btn btn-sm btn-close btn-outline-danger rounded-circle p-2" aria-label="Close" @@click="closeAlert"></button>
+                @TempData["MsgSuccess"]
+            </div>
+        }
+        @if (TempData["MsgError"] != null)
+        {
+            <div class="alert alert-danger col-sm text-center" role="alert" v-show="alertDiv">
+                <button type="button" class="btn btn-sm btn-danger btn-close rounded-circle p-1" aria-label="Close" @@click="closeAlert"></button>
+                @TempData["MsgError"]
+            </div>
+        }
+
+    </div>
 
 
-<h1 class="display-4">Lista de Contatos</h1>
-<div class="d-grid gap-2 d-md-flex justify-content-start text-center">
-    <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Criar">Add Novo Contato</a>
-</div>
-<hr />
-<div class="table-responsive">
-    <table class="table-sm border-dark">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Celular</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null && Model.Any())
-            {
-                foreach (ContatoModel contatos in Model)
+    <div class="d-grid gap-2 d-md-flex justify-content-start text-center">
+        <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Criar">Cadastrar Contato</a>
+    </div>
+    <hr />
+    <div class="table-responsive">
+        <table class="table-sm border-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Celular</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
                 {
-                    <tr>
-                        <td>@contatos.Id</td>
-                        <td>@contatos.Nome</td>
-                        <td>@contatos.Email</td>
-                        <td>@contatos.Celular</td>
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a role="button" class="btn btn-sm btn-secondary" asp-controller="Contato" asp-action="Editar" asp-route-id="@contatos.Id">Editar</a>
-                                <a role="button" class="btn btn-sm btn-danger btn-" asp-controller="Contato" asp-action="ApagarConfirmacao" asp-route-id="@contatos.Id">Deletar</a>
-                            </div>
-                        </td>
-                    </tr>
+                    foreach (ContatoModel contatos in Model)
+                    {
+                        <tr>
+                            <td>@contatos.Id</td>
+                            <td>@contatos.Nome</td>
+                            <td>@contatos.Email</td>
+                            <td>@contatos.Celular</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Editar" asp-route-id="@contatos.Id">Editar</a>
+                                    <a role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao" asp-route-id="@contatos.Id">Deletar</a>
+                                </div>
+                            </td>
+                        </tr>
 
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <script>
+        let contactView = new Vue({
+            el: '#contactView',
+            data: {
+                alertDiv: true,
+            },
+            methods: {
+                closeAlert: function () {
+                    this.alertDiv = false;
+                },
+            },
+        })
+    </script>
 </div>

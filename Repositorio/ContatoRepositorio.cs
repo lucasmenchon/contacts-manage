@@ -1,14 +1,5 @@
 ﻿using DawnPoets.Data;
-using DawnPoets.Migrations;
 using DawnPoets.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Collections.Generic;
 
 namespace DawnPoets.Repositorio
 {
@@ -63,7 +54,7 @@ namespace DawnPoets.Repositorio
             contatoDB.Email = contato.Email;
             contatoDB.Celular = contato.Celular;
 
-            if (_context.Contatos != null && _context.Contatos.Any() /*&& contatoDB.Id == contato.Id*/) _context.Contatos.Update(contatoDB);
+            if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Update(contatoDB);
 
             _context.SaveChanges();
 
@@ -72,11 +63,11 @@ namespace DawnPoets.Repositorio
 
         public bool Apagar(int id)
         {
-            ContatoModel contatoDB = BuscarPorId(id);
+            ContatoModel contatoDb = BuscarPorId(id);
 
-            if (contatoDB == null) throw new Exception("Houve um erro na Exclusão do contato.");
+            if (contatoDb == null) throw new Exception("Houve um erro na Exclusão do contato.");
 
-            if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Remove(contatoDB);
+            if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Remove(contatoDb);
 
             _context.SaveChanges();
 

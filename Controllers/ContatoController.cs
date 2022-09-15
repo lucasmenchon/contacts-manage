@@ -1,8 +1,6 @@
 ﻿using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.WebEncoders.Testing;
-using System.Text.Encodings.Web;
 
 namespace DawnPoets.Controllers
 {
@@ -29,12 +27,21 @@ namespace DawnPoets.Controllers
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepositorio.Adicionar(contato);
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Adicionar(contato);
+                    TempData["MsgSuccess"] = $"Contato {contato.Nome} adicionado com sucesso.";
+                    return RedirectToAction("Index");
+                }
+                return View(contato);
+            }
+            catch (Exception error)
+            {
+                TempData["MsgError"] = $"Ops!! Não foi possível cadastrar seu contato, tente novamente ou entre em contato com o suporte, detalhes do erro: {error.Message}";
                 return RedirectToAction("Index");
             }
-            return View(contato);
         }
 
         public IActionResult Editar(int id)
@@ -46,21 +53,28 @@ namespace DawnPoets.Controllers
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-
-            ContatoModel lcontato = _contatoRepositorio.BuscarPorId(contato.Id);
-            if (lcontato.Id != contato.Id)
+            try
             {
-                TempData["notexist"] = "<p class='text-danger'>Este usuário não existe para ser atualizado.</p>";
-                return View("Editar");
+                ContatoModel lcontato = _contatoRepositorio.BuscarPorId(contato.Id);
+                if (lcontato.Id != contato.Id)
+                {
+                    TempData["MsgError"] = "Ops!! Este contato não existe para ser atualizado.";
+                    return RedirectToAction("Index");
+                }
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MsgSuccess"] = $"Contato {contato.Nome} atualizado com sucesso.";
+                    return RedirectToAction("Index");
+                }
+                return View("Editar", contato);
             }
-
-            if (ModelState.IsValid)
+            catch (Exception error)
             {
-                _contatoRepositorio.Atualizar(contato);
+                TempData["MsgError"] = $"Ops!! Não foi possível atualizar seu contato, tente novamente ou entre em contato com o suporte, detalhes do erro: {error.Message}";
                 return RedirectToAction("Index");
             }
 
-            return View("Editar", contato);
         }
 
         public IActionResult ApagarConfirmacao(int id)
@@ -72,15 +86,25 @@ namespace DawnPoets.Controllers
 
         public IActionResult Apagar(int id)
         {
-            ContatoModel contatoDelete = new ContatoModel() { Id = id };
-            if (contatoDelete.Id == 0)
+            try
             {
-                TempData["notexist"] = "<p class='text-danger'>Este usuário não existe para ser deletado.</p>";
-                return View("ApagarConfirmacao", contatoDelete);
-            }
+                ContatoModel contatoDelete = _contatoRepositorio.BuscarPorId(id);
+                if (contatoDelete.Id == 0)
+                {
+                    TempData["MsgError"] = "Ops!! Este contato não existe para ser apagado.";
+                    return RedirectToAction("Index");
+                }
 
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+                _contatoRepositorio.Apagar(contatoDelete.Id);
+                TempData["MsgSuccess"] = $"Contato {contatoDelete.Nome} apagado com sucesso.";
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception error)
+            {
+                TempData["MsgError"] = $"Ops!! Não foi possível apagar seu contato, tente novamente ou entre em contato com o suporte, detalhes do erro: {error}";
+                return RedirectToAction("Index");
+            }
         }
 
     }
