@@ -26,13 +26,13 @@ namespace DawnPoets.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Celular")
+                    b.Property<string>("Cell")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("ContactEmail")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

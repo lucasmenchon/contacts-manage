@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BancoContext>(options => options.UseMySql("server=localhost;database=contatosdb;uid=root;pwd=", ServerVersion.Parse("8.0.30-mysql")));
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 var app = builder.Build();
 //builder.Services.AddEntityFrameworkMySql().AddDbContext<BancoContext>();

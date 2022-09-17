@@ -11,7 +11,8 @@ namespace DawnPoets.Data
           
         }
 
-        public DbSet<ContatoModel>? Contatos { get; set; }
+        public DbSet<ContatoModel> Contatos { get; set; }
+        public DbSet<UserModel> Usuarios { get; set; }
 
     }
 }

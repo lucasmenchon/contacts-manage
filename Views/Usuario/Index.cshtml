@@ -1,12 +1,12 @@
-﻿@model List<ContatoModel>
+﻿@model List<UserModel>
 @Html.Raw(TempData["msgDel"])
 @{
-    ViewData["Title"] = "Lista de Contatos";
+    ViewData["Title"] = "Lista de Usuarios";
 }
 
-<div id="contactView">
+<div id="userView">
     <div class="row">
-        <div class="col-auto"><h1 class="display-4">Lista de Contatos</h1></div>
+        <div class="col-auto"><h1 class="display-4">Lista de Usuarios</h1></div>
 
         @if (TempData["MsgSuccess"] != null)
         {
@@ -27,7 +27,7 @@
 
 
     <div class="d-grid gap-2 d-md-flex justify-content-start text-center">
-        <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Criar">Cadastrar Contato</a>
+        <a role="button" class="btn btn-sm btn-primary" asp-controller="Usuario" asp-action="Criar">Adicionar Usuário</a>
     </div>
     <hr />
     <div class="table-responsive">
@@ -36,24 +36,26 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Login</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Celular</th>
+                    <th scope="col">Data de Cadastro</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (ContatoModel contatos in Model)
+                    foreach (UserModel users in Model)
                     {
                         <tr>
-                            <td>@contatos.Id</td>
-                            <td>@contatos.Nome</td>
-                            <td>@contatos.Email</td>
-                            <td>@contatos.Celular</td>
+                            <td>@users.Id</td>
+                            <td>@users.Nome</td>
+                            <td>@users.Login</td>
+                            <td>@users.Email</td>
+                            <td>@users.DataCadastro</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a role="button" class="btn btn-sm btn-primary" asp-controller="Contato" asp-action="Editar" asp-route-id="@contatos.Id">Editar</a>
-                                    <a role="button" class="btn btn-sm btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao" asp-route-id="@contatos.Id">Deletar</a>
+                                    <a role="button" class="btn btn-sm btn-primary" asp-controller="Usuario" asp-action="Editar" asp-route-id="@users.Id">Editar</a>
+                                    <a role="button" class="btn btn-sm btn-danger" asp-controller="Usuario" asp-action="ApagarConfirmacao" asp-route-id="@users.Id">Deletar</a>
                                 </div>
                             </td>
                         </tr>
@@ -67,7 +69,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
 <script>
     let contactView = new Vue({
-        el: '#contactView',
+        el: '#userView',
         data: {
             alertDiv: true,
         },
