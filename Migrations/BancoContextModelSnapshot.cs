@@ -48,7 +48,7 @@ namespace DawnPoets.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataAtualizacao")
+                    b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataCadastro")

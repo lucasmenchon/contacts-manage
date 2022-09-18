@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DawnPoets.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20220917051154_TableUsuarios")]
+    [Migration("20220918060158_TableUsuarios")]
     partial class TableUsuarios
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace DawnPoets.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataAtualizacao")
+                    b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataCadastro")

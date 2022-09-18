@@ -14,7 +14,7 @@ namespace DawnPoets.Repositorio
 
         public ContatoModel Adicionar(ContatoModel contato)
         {
-            if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Add(contato);
+            if (_context.Contatos != null) _context.Contatos.Add(contato);
 
             _context.SaveChanges();
 

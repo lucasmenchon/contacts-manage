@@ -31,7 +31,7 @@ namespace DawnPoets.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepositorio.Adicionar(pUser);
+                    pUser = _usuarioRepositorio.Adicionar(pUser);
                     TempData["MsgSuccess"] = $"Usuário {pUser.Nome} adicionado com sucesso.";
                     return RedirectToAction("Index");
                 }

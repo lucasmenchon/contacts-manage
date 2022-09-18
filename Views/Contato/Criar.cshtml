@@ -8,26 +8,28 @@
     <h1>Add Contato</h1>
 
 </div>
-<div class="row g-3 align-items-center">
-    <form asp-controller="Contato" asp-action="Criar" method="post">
-        <div class="form-group col-auto">
-            <input type="text" asp-for="Nome" class="form-control" placeholder="Nome" />
-            @Html.ValidationMessageFor(contato => contato.Nome)
-        </div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <form asp-controller="Contato" asp-action="Criar" method="post">
+            <div class="form-group col">
+                <input type="text" asp-for="Nome" class="form-control" placeholder="Nome" />
+                @Html.ValidationMessageFor(contato => contato.Nome)
+            </div>
 
-        <div class="form-group col-auto">
-            <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
-            @Html.ValidationMessageFor(contato => contato.Email)
-        </div>
+            <div class="form-group">
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
+                @Html.ValidationMessageFor(contato => contato.Email)
+            </div>
 
-        <div class="form-group col-auto">
-            <input type="text" asp-for="Celular" class="form-control" placeholder="Celular" />
-            @Html.ValidationMessageFor(contato => contato.Celular)
-        </div>
+            <div class="form-group">
+                <input type="text" asp-for="Celular" class="form-control" placeholder="Celular" />
+                @Html.ValidationMessageFor(contato => contato.Celular)
+            </div>
 
-        <button type="submit" class="btn btn-sm btn-primary">Add</button>
-        <a role="button" class="btn btn-sm btn-secondary" asp-controller="Contato" asp-action="Index">Voltar</a>
-      
+            <button type="submit" class="btn btn-sm btn-primary">Add</button>
+            <a role="button" class="btn btn-sm btn-secondary" asp-controller="Contato" asp-action="Index">Voltar</a>
 
-    </form>
+
+        </form>
+    </div>
 </div>

@@ -1,4 +1,5 @@
-﻿@model UserModel
+﻿@using DawnPoets.Enums
+@model UserModel
 @{
     ViewData["Title"] = "Add Usuário";
 }
@@ -21,11 +22,29 @@
         </div>
 
         <div class="form-group col-auto">
-            <input type="text" asp-for="Login" class="form-control" placeholder="Celular" />
+            <input type="text" asp-for="Login" class="form-control" placeholder="Login" />
             @Html.ValidationMessageFor(user => user.Login)
         </div>
 
+        <div class="form-group col-auto">
+            <select type="text" asp-for="Perfil" class="form-control" placeholder="Perfil">
+                <option value="@PerfilEnum.Admin">Admin</option>
+                <option value="@PerfilEnum.Padrao">Padrão</option>                
+            </select>
+            @Html.ValidationMessageFor(user => user.Perfil)
+        </div>
+
+        <div class="form-group col-auto">
+            <input type="password" asp-for="Senha" class="form-control" placeholder="Senha" />
+            @Html.ValidationMessageFor(user => user.Senha)
+        </div>
+
+        @*        <div class="form-group col-auto">
+        <input type="date" asp-for="DataCadastro" class="form-control" placeholder="Data de Cadastro" />
+        @Html.ValidationMessageFor(user => user.DataCadastro)
+        </div>*@
+
         <button type="submit" class="btn btn-sm btn-primary">Add</button>
-        <a role="button" class="btn btn-sm btn-secondary" asp-controller="Usuario" asp-action="Index">Voltar</a>te
+        <a role="button" class="btn btn-sm btn-secondary" asp-controller="Usuario" asp-action="Index">Voltar</a>
     </form>
 </div>

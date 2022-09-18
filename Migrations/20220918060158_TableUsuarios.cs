@@ -26,7 +26,7 @@ namespace DawnPoets.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Perfil = table.Column<int>(type: "int", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    DataAtualizacao = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
