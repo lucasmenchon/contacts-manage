@@ -1,0 +1,51 @@
+﻿@using DawnPoets.Enums
+@model UserModel
+@{
+    ViewData["Title"] = "Editar Usuário";
+}
+
+<div class="text-center">
+
+    <h1>Editar Usuário</h1>
+
+</div>
+<div class="container-fluid d-flex justify-content-center">
+    <div class="row">
+        <form asp-controller="Usuario" asp-action="Alterar" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group col-auto">
+                <input type="text" asp-for="Nome" class="form-control" placeholder="Nome" />
+                @Html.ValidationMessageFor(user => user.Nome)
+            </div>
+
+            <div class="form-group col-auto">
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
+                @Html.ValidationMessageFor(user => user.Email)
+            </div>
+
+            <div class="form-group col-auto">
+                <input type="text" asp-for="Login" class="form-control" placeholder="Login" />
+                @Html.ValidationMessageFor(user => user.Login)
+            </div>
+
+            <div class="form-group col-auto">
+                <select type="text" asp-for="Perfil" class="form-control" placeholder="Perfil">
+                    <option value="@PerfilEnum.Admin">Admin</option>
+                    <option value="@PerfilEnum.Padrao">Padrão</option>
+                </select>
+                @Html.ValidationMessageFor(user => user.Perfil)
+            </div>
+
+            <div class="form-group col-auto">
+                <input type="password" asp-for="Senha" class="form-control" placeholder="Senha" />
+                @Html.ValidationMessageFor(user => user.Senha)
+            </div>
+
+            <div class="form-group col pt-1">
+                <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
+                <a role="button" class="btn btn-sm btn-secondary" asp-controller="Usuario" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
