@@ -31,12 +31,12 @@ namespace DawnPoets.Repositorio
         public ContatoModel BuscarPorId(int id)
         {
             ContatoModel contatoModel = new ContatoModel();
-
+            
             if (_context.Contatos != null && _context.Contatos.Any())
             {
                 foreach (ContatoModel contato in _context.Contatos)
                 {
-                    if (contato.Id == id) contatoModel = contato;
+                    if (contato.Id == id) contatoModel = contato;                  
                 }
             }
 
@@ -46,16 +46,16 @@ namespace DawnPoets.Repositorio
         public ContatoModel Atualizar(ContatoModel contato)
         {
             ContatoModel contatoDB = BuscarPorId(contato.Id);
-
+            
             if (contatoDB == null) throw new Exception("Houve um erro na atualização do contato.");
-
+           
             contatoDB.Id = contatoDB.Id;
             contatoDB.Nome = contato.Nome;
             contatoDB.Email = contato.Email;
             contatoDB.Celular = contato.Celular;
 
             if (_context.Contatos != null && _context.Contatos.Any()) _context.Contatos.Update(contatoDB);
-
+            
             _context.SaveChanges();
 
             return contatoDB;

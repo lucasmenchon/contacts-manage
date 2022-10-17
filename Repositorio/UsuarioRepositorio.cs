@@ -53,11 +53,8 @@ namespace DawnPoets.Repositorio
             updateUser.Id = pUser.Id;
             updateUser.Nome = pUser.Nome;
             updateUser.Login = pUser.Login;
-            updateUser.Senha = pUser.Senha;
             updateUser.Email = pUser.Email;
             updateUser.Perfil = pUser.Perfil;
-            updateUser.DataCadastro = pUser.DataCadastro;
-            updateUser.DataAtualizacao = DateTime.Now;
 
             if (_context.Usuarios != null && _context.Usuarios.Any()) _context.Usuarios.Update(updateUser);
 

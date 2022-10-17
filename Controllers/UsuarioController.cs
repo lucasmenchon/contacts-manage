@@ -81,30 +81,40 @@ namespace DawnPoets.Controllers
         }
 
         [HttpPost]
-        public IActionResult Alterar(UserModel pUser)
+        public IActionResult Alterar(UpdateUserModel pUpdateUser)
         {
             try
             {
-                UserModel updateUser = _usuarioRepositorio.BuscarPorId(pUser.Id);
-                if (updateUser.Id != pUser.Id)
-                {
-                    TempData["MsgError"] = "Ops!! Este Usuário não existe para ser atualizado.";
-                    return RedirectToAction("Index");
-                }
+                UserModel updateUser = null;
+
+                //if (updateUser?.Id != pUserNoPw.Id)
+                //{
+                //    TempData["MsgError"] = "Ops!! Este Usuário não existe para ser atualizado.";
+                //    return RedirectToAction("Index");
+                //}
+
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepositorio.Atualizar(pUser);
-                    TempData["MsgSuccess"] = $"Usuário {pUser.Nome} atualizado com sucesso.";
+                    updateUser = new UserModel()
+                    {
+                        Id = pUpdateUser.Id,
+                        Nome = pUpdateUser.Nome,
+                        Login = pUpdateUser.Login,
+                        Email = pUpdateUser.Email,
+                        Perfil = pUpdateUser.Perfil
+                    };
+                    
+                    updateUser = _usuarioRepositorio.Atualizar(updateUser);
+                    TempData["MsgSuccess"] = $"Usuário {updateUser.Nome} atualizado com sucesso.";
                     return RedirectToAction("Index");
                 }
-                return View("Editar", pUser);
+                return View("Editar", updateUser);
             }
             catch (Exception)
             {
                 TempData["MsgError"] = $"Ops!! Não foi possível atualizar o usuário, tente novamente ou entre em contato com o suporte.";
                 return RedirectToAction("Index");
             }
-
         }
     }
 }

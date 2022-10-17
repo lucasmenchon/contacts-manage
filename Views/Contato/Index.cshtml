@@ -15,6 +15,7 @@
                 <button type="button" class="btn btn-sm btn-danger btn-close rounded-circle p-1" aria-label="Close" @@click="closeAlert"></button>
             </div>
         }
+
         @if (TempData["MsgError"] != null)
         {
             <div class="alert alert-danger col-auto text-center" role="alert" v-show="alertDiv">
@@ -66,7 +67,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
 <script>
-    let contactView = new Vue({
+    const contactView = new Vue({
         el: '#contactView',
         data: {
             alertDiv: true,

@@ -38,6 +38,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Login</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Perfil</th>
                     <th scope="col">Data de Cadastro</th>
                 </tr>
             </thead>
@@ -51,6 +52,7 @@
                             <td>@users.Nome</td>
                             <td>@users.Login</td>
                             <td>@users.Email</td>
+                            <td>@users.Perfil</td>
                             <td>@users.DataCadastro</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -67,7 +69,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
 <script>
-    let contactView = new Vue({
+    const contactView = new Vue({
         el: '#userView',
         data: {
             alertDiv: true,

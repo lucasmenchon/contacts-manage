@@ -16,5 +16,11 @@ namespace DawnPoets.Models
         [Required(ErrorMessage = "Digite o celular do contato.")]
         [Phone(ErrorMessage = "Celular informado inválido")]
         public string? Celular { get; set; }
+
+        public ContatoModel()
+        {
+            Id = new Random().Next(100000, 999999);
+        }
+
     }
 }

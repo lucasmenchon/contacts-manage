@@ -28,6 +28,7 @@
 
         <div class="form-group col-auto">
             <select type="text" asp-for="Perfil" class="form-control" placeholder="Perfil">
+                <option value="">Selecione</option>
                 <option value="@PerfilEnum.Admin">Admin</option>
                 <option value="@PerfilEnum.Padrao">Padrão</option>                
             </select>
