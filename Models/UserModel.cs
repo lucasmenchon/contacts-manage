@@ -27,6 +27,11 @@ namespace DawnPoets.Models
         public DateTime DataCadastro { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }
+
+        public bool SenhaValida(string senha)
+        {
+            return Senha == senha;
+        }
         
         //feito para gerar Id de 6 digitos aleatorio.
         public UserModel()

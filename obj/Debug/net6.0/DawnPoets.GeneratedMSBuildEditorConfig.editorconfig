@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lucas/source/repos/contacts-project-aspnet/DawnPoets/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lucas/source/repos/contacts-project-aspnet/DawnPoets/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,3 +78,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Lucas/source/repos/contacts-project-aspnet/DawnPoets/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-rk5u1glx9f
+
+[C:/Users/Lucas/source/repos/contacts-project-aspnet/DawnPoets/Views/Shared/_LayoutLogout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ursfqrex7e

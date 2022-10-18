@@ -4,6 +4,8 @@ namespace DawnPoets.Repositorio
 {
     public interface IUsuarioRepositorio
     {
+        UserModel BuscarPorLogin(string login);
+        
         UserModel Adicionar(UserModel user);
 
         List<UserModel> BuscarTodos();

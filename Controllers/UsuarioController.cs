@@ -103,11 +103,12 @@ namespace DawnPoets.Controllers
                         Email = pUpdateUser.Email,
                         Perfil = pUpdateUser.Perfil
                     };
-                    
+
                     updateUser = _usuarioRepositorio.Atualizar(updateUser);
                     TempData["MsgSuccess"] = $"Usuário {updateUser.Nome} atualizado com sucesso.";
                     return RedirectToAction("Index");
                 }
+                
                 return View("Editar", updateUser);
             }
             catch (Exception)

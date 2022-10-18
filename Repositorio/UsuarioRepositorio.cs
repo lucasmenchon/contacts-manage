@@ -75,5 +75,10 @@ namespace DawnPoets.Repositorio
 
             return true;
         }
+
+        public UserModel BuscarPorLogin(string login)
+        {
+            return _context.Usuarios.FirstOrDefault(user => user.Login.ToUpper() == login.ToUpper());
+        }
     }
 }
