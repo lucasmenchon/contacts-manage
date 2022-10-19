@@ -4,8 +4,8 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container d-flex justify-content-center">
-    <div class="col-3">
+<div id="loginApp" class="container d-flex justify-content-center">
+    <div class="col-4">
         <form asp-controller="Login" asp-action="Entrar" method="post">
             <div class="mb-3">
                 <label for="login" class="form-label">Email - Login</label>
@@ -22,30 +22,44 @@
                 <label class="form-check-label">Lembrar</label>
             </div>
             <button type="submit" class="btn btn-sm btn-primary">Entrar</button>
-            <div id="loginView">
-                @if (TempData["MsgError"] != null)
-                {
-                    <div class="small mt-1 alert alert-danger col-auto text-center" role="alert" v-show="alertDiv">
-                        @TempData["MsgError"]
-                        <button type="button" class="btn btn-sm btn-danger btn-close rounded-circle p-1" aria-label="Close" @@click="closeAlert"></button>
-                    </div>
-                }
-            </div>
+
+            @if (TempData["MsgError"] != null)
+            {
+                <div class="small mt-1 alert alert-danger col-auto text-center" role="alert" v-show="alertDiv">
+                    @TempData["MsgError"]
+                    <button type="button" class="btn btn-sm btn-danger btn-close rounded-circle p-1" aria-label="Close" @@click="closeAlert"></button>
+                </div>
+            }
 
         </form>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>*@
+<script src="https://unpkg.com/vue@3.2.41/dist/vue.global.js"></script>
 <script>
-    const loginView = new Vue({
-        el: '#loginView',
-        data: {
-            alertDiv: true,
+    //const loginView = new Vue({
+    //    el: '#loginView',
+    //    data: {
+    //        alertDiv: true,
+    //    },
+    //    methods: {
+    //        closeAlert: function () {
+    //            this.alertDiv = false;
+    //        },
+    //    },
+    //})
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                alertDiv: {},
+            }
         },
         methods: {
             closeAlert: function () {
-                this.alertDiv = false;
+                this.alertDiv = '';
             },
         },
-    })
+    }).mount('#loginApp')
 </script>

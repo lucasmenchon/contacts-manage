@@ -32,11 +32,5 @@ namespace DawnPoets.Models
         {
             return Senha == senha;
         }
-        
-        //feito para gerar Id de 6 digitos aleatorio.
-        public UserModel()
-        {
-            this.Id = new Random().Next(100000, 999999);
-        }
     }
 }

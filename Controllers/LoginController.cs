@@ -19,16 +19,16 @@ namespace DawnPoets.Controllers
         }
 
         [HttpPost]
-        public IActionResult Entrar(LoginModel loginModel)
+        public IActionResult Entrar(LoginModel loginUser)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    UserModel user = _usuarioRepositorio.BuscarPorLogin(loginModel.Login);
+                    UserModel user = _usuarioRepositorio.BuscarPorLogin(loginUser.Login);
                     if (user != null)
                     {
-                        if (user.SenhaValida(loginModel.Senha))
+                        if (user.SenhaValida(loginUser.Senha))
                         {
                             return RedirectToAction("Index", "Home");
                         }

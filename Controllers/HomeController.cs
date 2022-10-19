@@ -15,9 +15,6 @@ namespace DawnPoets.Controllers
 
         public IActionResult Index()
         {
-            //HomeModel l_home = new HomeModel();
-            //l_home.Name = "Lucas";
-
             return View();
         }
 
