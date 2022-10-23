@@ -1,10 +1,11 @@
 ﻿@model List<UserModel>
+@using DawnPoets.Enums
 @Html.Raw(TempData["msgDel"])
 @{
     ViewData["Title"] = "Lista de Usuarios";
 }
 
-<div id="userView">
+<div id="UserApp">
     <div class="row">
         <div class="col-auto"><h1 class="display-4">Lista de Usuarios</h1></div>
 
@@ -52,7 +53,7 @@
                             <td>@users.Nome</td>
                             <td>@users.Login</td>
                             <td>@users.Email</td>
-                            <td>@users.Perfil</td>
+                            <td>@users.Perfil</td> <!--validar etc. @@(users.Perfil == PerfilEnum.Admin ? "Administrador" : "Padrão")-->
                             <td>@users.DataCadastro</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -67,19 +68,26 @@
         </table>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue@3.2.41/dist/vue.global.js"></script>
 <script>
-    const contactView = new Vue({
-        el: '#userView',
-        data: {
-            alertDiv: true,
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                alertDiv: true,
+            }
         },
-        methods: {
+        methods: {            
+
             closeAlert: function () {
+                _this = this
                 this.alertDiv = false;
             },
+
         },
-    })
+        
+    }).mount('#UserApp')
 </script>
 
 

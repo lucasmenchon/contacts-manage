@@ -1,4 +1,5 @@
-﻿using DawnPoets.Models;
+﻿using DawnPoets.Helper;
+using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,15 +8,30 @@ namespace DawnPoets.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ISessao _sessao;
 
-        public LoginController(IUsuarioRepositorio usuarioRepositorio)
+        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
+            //se usuario esta logado, redireciona para home
+            if(_sessao.BuscarSessaoUsuario() != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
+        }
+
+        public IActionResult UserLogout()
+        {
+            _sessao.RemoverSessaoUsuario();
+
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -30,8 +46,10 @@ namespace DawnPoets.Controllers
                     {
                         if (user.SenhaValida(loginUser.Senha))
                         {
+                            _sessao.CriarSessaoUsuario(user);
                             return RedirectToAction("Index", "Home");
                         }
+                        
                         TempData["MsgError"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
                     }
                     TempData["MsgError"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";

@@ -69,3 +69,4 @@ C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\D
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.genruntimeconfig.cache
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\ref\DawnPoets.dll
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutLogout.cshtml.rz.scp.css
+C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Newtonsoft.Json.dll

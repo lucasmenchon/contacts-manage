@@ -1,4 +1,6 @@
-﻿using DawnPoets.Models;
+﻿using DawnPoets.Helper;
+using DawnPoets.Models;
+using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,9 +8,9 @@ namespace DawnPoets.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;       
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISessao sessao)
         {
             _logger = logger;
         }

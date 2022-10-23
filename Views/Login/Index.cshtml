@@ -4,7 +4,7 @@
     ViewData["Title"] = "Login";
 }
 
-<div id="loginApp" class="container d-flex justify-content-center">
+<div id="LoginApp" class="container d-flex justify-content-center">
     <div class="col-4">
         <form asp-controller="Login" asp-action="Entrar" method="post">
             <div class="mb-3">
@@ -34,32 +34,22 @@
         </form>
     </div>
 </div>
-@*<script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>*@
 <script src="https://unpkg.com/vue@3.2.41/dist/vue.global.js"></script>
 <script>
-    //const loginView = new Vue({
-    //    el: '#loginView',
-    //    data: {
-    //        alertDiv: true,
-    //    },
-    //    methods: {
-    //        closeAlert: function () {
-    //            this.alertDiv = false;
-    //        },
-    //    },
-    //})
     const { createApp } = Vue
 
     createApp({
         data() {
             return {
-                alertDiv: {},
+                alertDiv: true,
             }
         },
         methods: {
+
             closeAlert: function () {
-                this.alertDiv = '';
+                this.alertDiv = false;
             },
+
         },
-    }).mount('#loginApp')
+    }).mount('#LoginApp')
 </script>
