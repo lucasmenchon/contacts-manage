@@ -1,4 +1,5 @@
 ﻿using DawnPoets.Enums;
+using DawnPoets.Helper;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -30,7 +31,12 @@ namespace DawnPoets.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.MakeHash();
+        }
+
+        public void SetHashPw()
+        {
+            Senha = Senha.MakeHash();
         }
     }
 }

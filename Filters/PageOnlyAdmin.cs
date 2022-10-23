@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace DawnPoets.Filters
 {
-    public class PaginaUsuarioLogado : ActionFilterAttribute
+    public class PageOnlyAdmin : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {        
@@ -22,6 +22,10 @@ namespace DawnPoets.Filters
                 if(userLogin == null)
                 {
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Login" }, { "action", "Index" } });
+                }
+                if(userLogin.Perfil != Enums.PerfilEnum.Admin)
+                {
+                    context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Restrito" }, { "action", "Index" } });
                 }
             }
             

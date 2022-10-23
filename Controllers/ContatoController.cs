@@ -1,9 +1,11 @@
-﻿using DawnPoets.Models;
+﻿using DawnPoets.Filters;
+using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DawnPoets.Controllers
 {
+    [PaginaUsuarioLogado]
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRepositorio;
@@ -80,7 +82,6 @@ namespace DawnPoets.Controllers
         public IActionResult ApagarConfirmacao(int id)
         {
             ContatoModel contato = _contatoRepositorio.BuscarPorId(id);
-            //TempData["msgDel"] = $"<script>window.alert('{contato.Nome}')</script>";
             return View(contato);
         }
 

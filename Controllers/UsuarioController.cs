@@ -1,9 +1,11 @@
-﻿using DawnPoets.Models;
+﻿using DawnPoets.Filters;
+using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DawnPoets.Controllers
 {
+    [PageOnlyAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

@@ -1,4 +1,5 @@
-﻿using DawnPoets.Helper;
+﻿using DawnPoets.Filters;
+using DawnPoets.Helper;
 using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 
 namespace DawnPoets.Controllers
 {
+    [PaginaUsuarioLogado]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;       

@@ -15,6 +15,7 @@ namespace DawnPoets.Repositorio
         public UserModel Adicionar(UserModel addUser)
         {
             addUser.DataCadastro = DateTime.Now;
+            addUser.SetHashPw();
             if (_context.Usuarios != null) _context.Usuarios.Add(addUser);
 
             _context.SaveChanges();
