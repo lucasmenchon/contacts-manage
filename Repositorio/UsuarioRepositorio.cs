@@ -81,5 +81,10 @@ namespace DawnPoets.Repositorio
         {
             return _context.Usuarios.FirstOrDefault(user => user.Login.ToUpper() == login.ToUpper());
         }
+
+        public UserModel BuscarEmailLogin(string email, string login)
+        {
+            return _context.Usuarios.FirstOrDefault(user => user.Email.ToUpper() == email.ToUpper() && user.Login.ToUpper() == login.ToUpper());
+        }
     }
 }

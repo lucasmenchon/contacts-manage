@@ -38,5 +38,12 @@ namespace DawnPoets.Models
         {
             Senha = Senha.MakeHash();
         }
+
+        public string MakeNewPassword()
+        {
+            string newPassword = Guid.NewGuid().ToString().Substring(0 , 8);
+            Senha = newPassword.MakeHash();
+            return newPassword;
+        }
     }
 }

@@ -5,6 +5,8 @@ namespace DawnPoets.Repositorio
     public interface IUsuarioRepositorio
     {
         UserModel BuscarPorLogin(string login);
+
+        UserModel BuscarEmailLogin(string email, string login);
         
         UserModel Adicionar(UserModel user);
 

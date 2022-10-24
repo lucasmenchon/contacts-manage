@@ -19,7 +19,7 @@ namespace DawnPoets.Controllers
         public IActionResult Index()
         {
             //se usuario esta logado, redireciona para home
-            if(_sessao.BuscarSessaoUsuario() != null)
+            if (_sessao.BuscarSessaoUsuario() != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -32,6 +32,39 @@ namespace DawnPoets.Controllers
             _sessao.RemoverSessaoUsuario();
 
             return RedirectToAction("Index", "Login");
+        }
+
+        public IActionResult RedefinePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SendLinkRedefinePw(RedefinePasswordModel redefinePassword)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UserModel user = _usuarioRepositorio.BuscarEmailLogin(redefinePassword.Email, redefinePassword.Login);
+                    if (user != null)
+                    {
+                        string newPassword = user.MakeNewPassword();
+                        _usuarioRepositorio.Atualizar(user);
+                        TempData["MsgSuccess"] = $"Enviamos para seu email cadastrado uma nova senha.";
+                        return RedirectToAction("Index", "Login");
+                    }
+                    TempData["MsgError"] = $"Não foi possível redefinir sua senha. Por favor verifique os dados informados.";
+                    return View("RedefinePassword");
+                }
+                return View("RedefinePassword");
+            }
+            catch (Exception)
+            {
+
+                TempData["MsgError"] = $"Ops!! Não foi possível redefinir sua senha, tente novamente ou entre em contato com o suporte.";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -49,7 +82,7 @@ namespace DawnPoets.Controllers
                             _sessao.CriarSessaoUsuario(user);
                             return RedirectToAction("Index", "Home");
                         }
-                        
+
                         TempData["MsgError"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
                     }
                     TempData["MsgError"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
