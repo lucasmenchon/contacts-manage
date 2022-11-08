@@ -86,5 +86,23 @@ namespace DawnPoets.Repositorio
         {
             return _context.Usuarios.FirstOrDefault(user => user.Email.ToUpper() == email.ToUpper() && user.Login.ToUpper() == login.ToUpper());
         }
+
+        public UserModel AlterarSenha(ChangePasswordModel changePasswordModel)
+        {
+            UserModel userModel = BuscarPorId(changePasswordModel.Id);
+
+            if (userModel == null) throw new Exception("Houve um erro na atualização da senha");
+
+            if (!userModel.SenhaValida(changePasswordModel.SenhaAtual)) throw new Exception("Senha atual não confere");
+
+            if (userModel.SenhaValida(changePasswordModel.NovaSenha)) throw new Exception("Nova senha deve ser diferente da atual");
+
+            userModel.SetNewPassword(changePasswordModel.NovaSenha);
+            userModel.DataAtualizacao = DateTime.Now;
+
+            _context.Usuarios.Update(userModel);
+            _context.SaveChanges();
+            return userModel;
+        }
     }
 }

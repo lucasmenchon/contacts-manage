@@ -1,4 +1,5 @@
 ﻿using DawnPoets.Filters;
+using DawnPoets.Helper;
 using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -9,17 +10,20 @@ namespace DawnPoets.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ISessao _sessao;
+
+        public ContatoController(IContatoRepositorio contatoRepositorio, ISessao sessao)
+        {
+            _contatoRepositorio = contatoRepositorio;
+            _sessao = sessao;
+        }
 
         public IActionResult Index()
         {
-            List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
+            UserModel userLogged = _sessao.BuscarSessaoUsuario();
+            List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos(userLogged.Id);
             return View(contatos);
-        }
-
-        public ContatoController(IContatoRepositorio contatoRepositorio)
-        {
-            _contatoRepositorio = contatoRepositorio;
-        }
+        }        
 
         public IActionResult Criar()
         {
@@ -33,6 +37,8 @@ namespace DawnPoets.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    UserModel userLogged = _sessao.BuscarSessaoUsuario();
+                    contato.UserId = userLogged.Id;
                     _contatoRepositorio.Adicionar(contato);
                     TempData["MsgSuccess"] = $"Contato {contato.Nome} adicionado com sucesso.";
                     return RedirectToAction("Index");
@@ -65,6 +71,9 @@ namespace DawnPoets.Controllers
                 }
                 if (ModelState.IsValid)
                 {
+                    UserModel userLogged = _sessao.BuscarSessaoUsuario();
+                    contato.UserId = userLogged.Id;
+                    
                     _contatoRepositorio.Atualizar(contato);
                     TempData["MsgSuccess"] = $"Contato {contato.Nome} atualizado com sucesso.";
                     return RedirectToAction("Index");

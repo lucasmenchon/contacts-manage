@@ -48,6 +48,7 @@ C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\M
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.csproj.AssemblyReference.cache
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.GeneratedMSBuildEditorConfig.editorconfig
@@ -60,6 +61,7 @@ C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\D
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutLogout.cshtml.rz.scp.css
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\bundle\DawnPoets.styles.css
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\projectbundle\DawnPoets.bundle.scp.css
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.csproj.CopyComplete
@@ -68,5 +70,3 @@ C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\r
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.pdb
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\DawnPoets.genruntimeconfig.cache
 C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\ref\DawnPoets.dll
-C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutLogout.cshtml.rz.scp.css
-C:\Users\Lucas\source\repos\contacts-project-aspnet\DawnPoets\bin\Debug\net6.0\Newtonsoft.Json.dll

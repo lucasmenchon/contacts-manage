@@ -8,9 +8,9 @@ namespace DawnPoets.Helper
         public static string MakeHash(this string value)
         {
             //var hash = SHA1.Create();
-            var hash = SHA256.Create();
+            //var hash = SHA256.Create();
             //var hash = SHA384.Create();
-            //var hash = SHA512.Create();
+            var hash = SHA512.Create();
             var encode = new ASCIIEncoding();
             var array = encode.GetBytes(value);
 
@@ -24,7 +24,6 @@ namespace DawnPoets.Helper
             }
 
             return strHexa.ToString();
-
         }
     }
 }

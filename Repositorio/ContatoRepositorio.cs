@@ -21,11 +21,11 @@ namespace DawnPoets.Repositorio
             return contato;
         }
 
-        public List<ContatoModel> BuscarTodos()
+        public List<ContatoModel> BuscarTodos(int userId)
         {
             List<ContatoModel> contatosList = new List<ContatoModel>();
 
-            return _context.Contatos != null && _context.Contatos.Any() ? _context.Contatos.ToList() : contatosList;
+            return _context.Contatos != null && _context.Contatos.Any() ? _context.Contatos.Where(contato => contato.UserId  == userId).ToList() : contatosList;
         }
 
         public ContatoModel BuscarPorId(int id)

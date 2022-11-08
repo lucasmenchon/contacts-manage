@@ -1,4 +1,5 @@
 ﻿using DawnPoets.Filters;
+using DawnPoets.Helper;
 using DawnPoets.Models;
 using DawnPoets.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace DawnPoets.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ISessao _sessao;
 
         public IActionResult Index()
         {

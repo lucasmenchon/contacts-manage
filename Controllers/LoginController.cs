@@ -9,11 +9,13 @@ namespace DawnPoets.Controllers
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly ISessao _sessao;
+        private readonly IEmail _email;
 
-        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao, IEmail email)
         {
             _usuarioRepositorio = usuarioRepositorio;
             _sessao = sessao;
+            _email = email;
         }
 
         public IActionResult Index()
@@ -50,8 +52,20 @@ namespace DawnPoets.Controllers
                     if (user != null)
                     {
                         string newPassword = user.MakeNewPassword();
-                        _usuarioRepositorio.Atualizar(user);
-                        TempData["MsgSuccess"] = $"Enviamos para seu email cadastrado uma nova senha.";
+
+                        string messageEmail = $"Sua nova senha é: {newPassword}";
+                        bool sentEmail = _email.SendEmail(user.Email, "System Contacts - New Password", messageEmail);
+
+                        if (sentEmail)
+                        {
+                            _usuarioRepositorio.Atualizar(user);
+                            TempData["MsgSuccess"] = $"Enviamos para seu email cadastrado uma nova senha.";
+                        }
+                        else
+                        {
+                            TempData["MsgError"] = $"Não foi possível enviar o e-mail. Por favor, tente novamente.";
+                        }
+                        
                         return RedirectToAction("Index", "Login");
                     }
                     TempData["MsgError"] = $"Não foi possível redefinir sua senha. Por favor verifique os dados informados.";

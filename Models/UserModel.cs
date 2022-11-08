@@ -29,6 +29,8 @@ namespace DawnPoets.Models
 
         public DateTime? DataAtualizacao { get; set; }
 
+        public virtual List<ContatoModel>? ContatosList { get; set; }
+
         public bool SenhaValida(string senha)
         {
             return Senha == senha.MakeHash();
@@ -39,9 +41,14 @@ namespace DawnPoets.Models
             Senha = Senha.MakeHash();
         }
 
+        public void SetNewPassword(string newPassword)
+        {
+            Senha = newPassword.MakeHash();
+        }
+
         public string MakeNewPassword()
         {
-            string newPassword = Guid.NewGuid().ToString().Substring(0 , 8);
+            string newPassword = Guid.NewGuid().ToString().Substring(0, 8);
             Senha = newPassword.MakeHash();
             return newPassword;
         }

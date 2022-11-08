@@ -7,7 +7,7 @@ namespace DawnPoets.Repositorio
     {
         ContatoModel Adicionar(ContatoModel contato);
 
-        List<ContatoModel> BuscarTodos();
+        List<ContatoModel> BuscarTodos(int userId); // deixar sem parametro faz realizar a busca de todos
 
         ContatoModel BuscarPorId(int id);
 
