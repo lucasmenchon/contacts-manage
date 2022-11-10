@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hJLBd9EpZ1832vRHPOSdc4TtQqL5WbhZf0m31g0krjHB1FTVZMBbQfN8BnL1aPu+yTK6iADyn57ndpXPlnEwBQ==",
+  "dgSpecHash": "WUppd/maLwrwukiDhqpnj6HkxFWPPVVJEE4yi4qBZGRuTMyoDHWQ8tV0qv1b9MEMxF0DIxTvZ2FYgFAg8JJbww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas\\source\\repos\\contacts-project-aspnet\\DawnPoets\\DawnPoets.csproj",
+  "projectFilePath": "C:\\Users\\Lucas\\source\\repos\\contacts-project-aspnet\\ContactsManage.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.8\\microsoft.entityframeworkcore.6.0.8.nupkg.sha512",

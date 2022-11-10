@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace DawnPoets.Helper
+namespace ContactsManage.Helper
 {
     public static class Cryptography
     {

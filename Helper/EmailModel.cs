@@ -3,7 +3,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DawnPoets.Helper
+namespace ContactsManage.Helper
 {
     public class EmailModel : IEmail
     {

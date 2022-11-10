@@ -1,4 +1,4 @@
-﻿namespace DawnPoets.Enums
+﻿namespace ContactsManage.Enums
 {
     public enum PerfilEnum
     {

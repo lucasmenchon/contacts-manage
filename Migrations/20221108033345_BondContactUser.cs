@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DawnPoets.Migrations
+namespace ContactsManage.Migrations
 {
     public partial class BondContactUser : Migration
     {

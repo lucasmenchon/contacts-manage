@@ -1,10 +1,10 @@
-﻿using DawnPoets.Filters;
-using DawnPoets.Helper;
-using DawnPoets.Models;
-using DawnPoets.Repositorio;
+﻿using ContactsManage.Filters;
+using ContactsManage.Helper;
+using ContactsManage.Models;
+using ContactsManage.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DawnPoets.Controllers
+namespace ContactsManage.Controllers
 {
     [PaginaUsuarioLogado]
     public class ContatoController : Controller

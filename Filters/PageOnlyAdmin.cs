@@ -1,9 +1,9 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 
-namespace DawnPoets.Filters
+namespace ContactsManage.Filters
 {
     public class PageOnlyAdmin : ActionFilterAttribute
     {

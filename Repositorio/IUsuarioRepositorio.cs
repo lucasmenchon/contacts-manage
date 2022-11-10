@@ -1,6 +1,6 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 
-namespace DawnPoets.Repositorio
+namespace ContactsManage.Repositorio
 {
     public interface IUsuarioRepositorio
     {

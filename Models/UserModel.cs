@@ -1,9 +1,9 @@
-﻿using DawnPoets.Enums;
-using DawnPoets.Helper;
+﻿using ContactsManage.Enums;
+using ContactsManage.Helper;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DawnPoets.Models
+namespace ContactsManage.Models
 {
     public class UserModel
     {

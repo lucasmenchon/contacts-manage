@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DawnPoets.Models
+namespace ContactsManage.Models
 {
     public class LoginModel
     {

@@ -1,8 +1,8 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace DawnPoets.ViewComponents
+namespace ContactsManage.ViewComponents
 {
     public class Menu : ViewComponent
     {

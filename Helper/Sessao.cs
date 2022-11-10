@@ -1,8 +1,8 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 using Newtonsoft.Json;
 using System.Text.Json.Nodes;
 
-namespace DawnPoets.Helper
+namespace ContactsManage.Helper
 {
     public class Sessao : ISessao
     {

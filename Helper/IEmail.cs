@@ -1,4 +1,4 @@
-﻿namespace DawnPoets.Helper
+﻿namespace ContactsManage.Helper
 {
     public interface IEmail
     {

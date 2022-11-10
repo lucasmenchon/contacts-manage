@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "DawnPoets/1.0.0": {
+      "ContactsManage/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.8",
           "Microsoft.EntityFrameworkCore.Design": "6.0.8",
@@ -15,7 +15,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2"
         },
         "runtime": {
-          "DawnPoets.dll": {}
+          "ContactsManage.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -177,7 +177,7 @@
     }
   },
   "libraries": {
-    "DawnPoets/1.0.0": {
+    "ContactsManage/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

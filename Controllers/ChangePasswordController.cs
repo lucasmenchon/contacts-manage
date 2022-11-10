@@ -1,9 +1,9 @@
-﻿using DawnPoets.Helper;
-using DawnPoets.Models;
-using DawnPoets.Repositorio;
+﻿using ContactsManage.Helper;
+using ContactsManage.Models;
+using ContactsManage.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DawnPoets.Controllers
+namespace ContactsManage.Controllers
 {
     public class ChangePasswordController : Controller
     {

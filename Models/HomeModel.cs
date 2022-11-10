@@ -1,4 +1,4 @@
-﻿namespace DawnPoets.Models
+﻿namespace ContactsManage.Models
 {
     public class HomeModel
     {

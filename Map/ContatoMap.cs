@@ -1,9 +1,9 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DawnPoets.Map
+namespace ContactsManage.Map
 {
     public class ContatoMap : IEntityTypeConfiguration<ContatoModel>
     {

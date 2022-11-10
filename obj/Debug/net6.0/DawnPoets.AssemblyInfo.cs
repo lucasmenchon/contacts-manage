@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("DawnPoets")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("ContactsManage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("DawnPoets")]
-[assembly: System.Reflection.AssemblyTitleAttribute("DawnPoets")]
+[assembly: System.Reflection.AssemblyProductAttribute("ContactsManage")]
+[assembly: System.Reflection.AssemblyTitleAttribute("ContactsManage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.

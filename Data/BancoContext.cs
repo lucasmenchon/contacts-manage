@@ -1,9 +1,9 @@
-﻿using DawnPoets.Map;
-using DawnPoets.Models;
+﻿using ContactsManage.Map;
+using ContactsManage.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DawnPoets.Data
+namespace ContactsManage.Data
 {
     public class BancoContext : DbContext
     {

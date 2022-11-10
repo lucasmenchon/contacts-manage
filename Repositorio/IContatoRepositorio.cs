@@ -1,7 +1,7 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace DawnPoets.Repositorio
+namespace ContactsManage.Repositorio
 {
     public interface IContatoRepositorio
     {

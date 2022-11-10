@@ -1,7 +1,7 @@
-﻿using DawnPoets.Data;
-using DawnPoets.Models;
+﻿using ContactsManage.Data;
+using ContactsManage.Models;
 
-namespace DawnPoets.Repositorio
+namespace ContactsManage.Repositorio
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {

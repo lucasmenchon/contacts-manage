@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DawnPoets.Migrations
+namespace ContactsManage.Migrations
 {
     public partial class TableContatos : Migration
     {

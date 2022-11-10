@@ -1,8 +1,8 @@
-﻿using DawnPoets.Enums;
+﻿using ContactsManage.Enums;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DawnPoets.Models
+namespace ContactsManage.Models
 {
     public class UpdateUserModel
     {

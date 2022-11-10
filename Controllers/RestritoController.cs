@@ -1,7 +1,7 @@
-﻿using DawnPoets.Filters;
+﻿using ContactsManage.Filters;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DawnPoets.Controllers
+namespace ContactsManage.Controllers
 {
     [PaginaUsuarioLogado]
     public class RestritoController : Controller

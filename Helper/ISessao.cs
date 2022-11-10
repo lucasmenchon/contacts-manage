@@ -1,6 +1,6 @@
-﻿using DawnPoets.Models;
+﻿using ContactsManage.Models;
 
-namespace DawnPoets.Helper
+namespace ContactsManage.Helper
 {
     public interface ISessao
     {
