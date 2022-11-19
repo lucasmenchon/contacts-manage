@@ -1,7 +1,5 @@
 ﻿using System.Net;
 using System.Net.Mail;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace ContactsManage.Helper
 {
@@ -45,7 +43,7 @@ namespace ContactsManage.Helper
                 using (SmtpClient smtpClient = new SmtpClient(host, port))
                 {                   
                     smtpClient.Credentials = new NetworkCredential(systemEmail, passwordEmail);
-                    smtpClient.EnableSsl = true;                    
+                    smtpClient.EnableSsl = true;
                     smtpClient.Send(mailMessage);
                     
                     return true;

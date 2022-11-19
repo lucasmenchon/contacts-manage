@@ -51,7 +51,7 @@ namespace ContactsManage.Controllers
         public IActionResult ApagarConfirmacao(int id)
         {
             UserModel deleteUser = _usuarioRepositorio.BuscarPorId(id);
-            //TempData["msgDel"] = $"<script>window.alert('{contato.Nome}')</script>";
+            
             return View(deleteUser);
         }
 
@@ -90,13 +90,7 @@ namespace ContactsManage.Controllers
             try
             {
                 UserModel updateUser = null;
-
-                //if (updateUser?.Id != pUserNoPw.Id)
-                //{
-                //    TempData["MsgError"] = "Ops!! Este Usuário não existe para ser atualizado.";
-                //    return RedirectToAction("Index");
-                //}
-
+                
                 if (ModelState.IsValid)
                 {
                     updateUser = new UserModel()

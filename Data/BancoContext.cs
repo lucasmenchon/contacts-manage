@@ -9,7 +9,7 @@ namespace ContactsManage.Data
     {
         public BancoContext (DbContextOptions<BancoContext> options) : base(options)
         {
-          
+
         }
         
         public DbSet<ContatoModel> Contatos { get; set; }
@@ -20,6 +20,5 @@ namespace ContactsManage.Data
             modelBuilder.ApplyConfiguration(new ContatoMap());
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
