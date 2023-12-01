@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20221121020524_CreateDb.cs" />
+    <Compile Remove="Migrations\20221121020524_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\BancoContextModelSnapshot.cs" />
     <Compile Remove="Repositorio\IContatoRepositorio - Cópia.cs" />
   </ItemGroup>
 
@@ -22,6 +25,10 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

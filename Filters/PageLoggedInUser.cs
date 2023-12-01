@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace ContactsManage.Filters
 {
-    public class PageOnlyAdmin : ActionFilterAttribute
+    public class PageLoggedInUser : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {        
@@ -22,10 +22,6 @@ namespace ContactsManage.Filters
                 if(userLogin == null)
                 {
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Login" }, { "action", "Index" } });
-                }
-                if(userLogin.Profile != Enums.eProfile.Admin)
-                {
-                    context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Restrito" }, { "action", "Index" } });
                 }
             }
             

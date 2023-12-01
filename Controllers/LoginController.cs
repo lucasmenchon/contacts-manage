@@ -7,21 +7,20 @@ namespace ContactsManage.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
-        private readonly ISessao _sessao;
+        private readonly IUserRepository _userRepository;
+        private readonly Helper.ISession _session;
         private readonly IEmail _email;
 
-        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao, IEmail email)
+        public LoginController(IUserRepository usuarioRepositorio, Helper.ISession session, IEmail email)
         {
-            _usuarioRepositorio = usuarioRepositorio;
-            _sessao = sessao;
+            _userRepository = usuarioRepositorio;
+            _session = session;
             _email = email;
         }
 
         public IActionResult Index()
         {
-            //se usuario esta logado, redireciona para home
-            if (_sessao.BuscarSessaoUsuario() != null)
+            if (_session.FindSession() != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -31,7 +30,7 @@ namespace ContactsManage.Controllers
 
         public IActionResult UserLogout()
         {
-            _sessao.RemoverSessaoUsuario();
+            _session.RemoveSession();
 
             return RedirectToAction("Index", "Login");
         }
@@ -42,23 +41,23 @@ namespace ContactsManage.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendLinkRedefinePw(RedefinePasswordModel redefinePassword)
+        public IActionResult SendLinkRedefinePassword(RedefinePassword redefinePassword)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    UserModel user = _usuarioRepositorio.BuscarEmailLogin(redefinePassword.Email, redefinePassword.Login);
+                    User user = _userRepository.FindEmailLogin(redefinePassword.Email, redefinePassword.Login);
                     if (user != null)
                     {
                         string newPassword = user.MakeNewPassword();
 
-                        string messageEmail = $"Sua nova senha é: {newPassword}";
-                        bool sentEmail = _email.SendEmail(user.Email, "System Contacts - New Password", messageEmail);
+                        string messageEmail = $"<p style='color:black;'>Sua nova senha é:</p> {newPassword}";
+                        bool sentEmail = _email.SendEmail(user.Email, "Contacts Manage - New Password", messageEmail);
 
                         if (sentEmail)
                         {
-                            _usuarioRepositorio.Atualizar(user);
+                            _userRepository.UpdateUser(user);
                             TempData["MsgSuccess"] = $"Enviamos para seu email cadastrado uma nova senha.";
                         }
                         else
@@ -82,18 +81,18 @@ namespace ContactsManage.Controllers
         }
 
         [HttpPost]
-        public IActionResult Entrar(LoginModel loginUser)
+        public IActionResult LoginAccess(LoginModel loginUser)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    UserModel user = _usuarioRepositorio.BuscarPorLogin(loginUser.Login);
+                    User user = _userRepository.FindByLogin(loginUser.Login);
                     if (user != null)
                     {
-                        if (user.SenhaValida(loginUser.Senha))
+                        if (user.ValidPassword(loginUser.Password))
                         {
-                            _sessao.CriarSessaoUsuario(user);
+                            _session.CreateSession(user);
                             return RedirectToAction("Index", "Home");
                         }
 
@@ -103,10 +102,10 @@ namespace ContactsManage.Controllers
                 }
                 return View("Index");
             }
-            catch (Exception error)
+            catch (Exception ex)
             {
 
-                TempData["MsgError"] = $"Ops!! Não foi possível realizar seu login, tente novamente ou entre em contato com o suporte, detalhes do erro: {error.Message}";
+                TempData["MsgError"] = $"Ops!! Não foi possível realizar seu login, tente novamente ou entre em contato com o suporte, detalhes do erro: {ex.Message}";
                 return RedirectToAction("Index");
             }
         }

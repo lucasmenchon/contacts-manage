@@ -1,0 +1,46 @@
+﻿@using ContactsManage.Enums
+@model User
+@{
+    ViewData["Title"] = "Add Usuário";
+}
+
+<div class="text-center">
+
+    <h1>Add Usuário</h1>
+
+</div>
+<div class="row g-3 align-items-center">
+    <form asp-controller="User" asp-action="CreateUser" method="post">
+        <div class="form-group col-auto">
+            <input type="text" asp-for="Name" class="form-control" placeholder="Nome" />
+            @Html.ValidationMessageFor(user => user.Name)
+        </div>
+
+        <div class="form-group col-auto">
+            <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
+            @Html.ValidationMessageFor(user => user.Email)
+        </div>
+
+        <div class="form-group col-auto">
+            <input type="text" asp-for="Login" class="form-control" placeholder="Login" />
+            @Html.ValidationMessageFor(user => user.Login)
+        </div>
+
+        <div class="form-group col-auto">
+            <select type="text" asp-for="Profile" class="form-control" placeholder="Perfil">
+                <option value="">Selecione</option>
+                <option value="@eProfile.Admin">Admin</option>
+                <option value="@eProfile.Simple">Padrão</option>                
+            </select>
+            @Html.ValidationMessageFor(user => user.Profile)
+        </div>
+
+        <div class="form-group col-auto">
+            <input type="password" asp-for="Password" class="form-control" placeholder="Senha" />
+            @Html.ValidationMessageFor(user => user.Password)
+        </div>
+
+        <button type="submit" class="btn btn-sm btn-primary">Add</button>
+        <a role="button" class="btn btn-sm btn-secondary" asp-controller="User" asp-action="Index">Voltar</a>
+    </form>
+</div>

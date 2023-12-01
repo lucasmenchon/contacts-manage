@@ -8,14 +8,14 @@ namespace ContactsManage.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            string userSession = HttpContext.Session.GetString("SessaoUsuarioLogado");
+            string userSession = HttpContext.Session.GetString("LoggedInUser");
 
             if (string.IsNullOrEmpty(userSession))
             {
                 return null;
             }
 
-            UserModel user = JsonConvert.DeserializeObject<UserModel>(userSession);
+            User user = JsonConvert.DeserializeObject<User>(userSession);
 
             return View(user);
         }

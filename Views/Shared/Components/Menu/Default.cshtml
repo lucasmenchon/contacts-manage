@@ -1,7 +1,7 @@
 ﻿@using ContactsManage.Enums
-@model UserModel
+@model User
 
-<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Olá, @Model.Nome</a>
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Olá, @Model.Name</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,17 +12,21 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contatos</a>
         </li>
 
-        @if(Model.Perfil == PerfilEnum.Admin){
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
-        </li>
+        @if (Model.Profile == eProfile.Admin)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Usuarios</a>
+            </li>
         }
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="ChangePassword" asp-action="Index">Alterar Senha</a>
-        </li>
+        @if (Model.Profile == eProfile.Admin)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="ChangePassword" asp-action="Index">Alterar Senha</a>
+            </li>
+        }
         <li class="nav-item">
             <a class="nav-link text-danger" asp-area="" asp-controller="Login" asp-action="UserLogout">Sair</a>
         </li>

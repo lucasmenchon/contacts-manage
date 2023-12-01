@@ -9,9 +9,9 @@ namespace ContactsManage.Helper
         {
             //var hash = MD5.Create();
             //var hash = SHA1.Create();
-            //var hash = SHA256.Create();
+            var hash = SHA256.Create();
             //var hash = SHA384.Create();
-            var hash = SHA512.Create();
+            //var hash = SHA512.Create();
             var encode = new ASCIIEncoding();
             var array = encode.GetBytes(value);
 

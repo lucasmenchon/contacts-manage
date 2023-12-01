@@ -2,16 +2,18 @@ using ContactsManage.Data;
 using ContactsManage.Helper;
 using ContactsManage.Repositorio;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Net.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+string connectionString = builder.Environment.IsDevelopment()
+    ? builder.Configuration.GetConnectionString("LocalDb")
+    : builder.Configuration.GetConnectionString("HostDb");
+
+builder.Services.AddDbContext<DataContext>(options => options.UseMySql(connectionString, ServerVersion.Parse("8.0.31-mysql")));
 
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<BancoContext>(options => options.UseMySql("server=localhost;database=contatosdb;uid=root;pwd=", ServerVersion.Parse("8.0.30-mysql")));
-
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSession(session =>
 {
@@ -19,19 +21,16 @@ builder.Services.AddSession(session =>
     session.Cookie.IsEssential = true;
 });
 
-builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
-builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-builder.Services.AddScoped<ISessao, Sessao>();
+builder.Services.AddScoped<IContactRepositorio, ContactRepositorio>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ContactsManage.Helper.ISession, Session>();
 builder.Services.AddScoped<IEmail, EmailModel>();
 
-
 var app = builder.Build();
-//builder.Services.AddEntityFrameworkMySql().AddDbContext<BancoContext>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

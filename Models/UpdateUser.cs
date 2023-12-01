@@ -1,0 +1,24 @@
+﻿using ContactsManage.Enums;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace ContactsManage.Models
+{
+    public class UpdateUser
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Digite o nome do usuário.")]
+        public string Nome { get; set; }
+
+        [Required(ErrorMessage = "Digite o login do usuário.")]
+        public string Login { get; set; }
+
+        [Required(ErrorMessage = "Digite o email do usuário.")]
+        [EmailAddress(ErrorMessage = "Email informado inválido")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Selecione o tipo de perfil.")]
+        public eProfile? Perfil { get; set; }
+    }
+}

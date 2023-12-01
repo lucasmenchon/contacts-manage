@@ -6,7 +6,7 @@
 
 <div id="LoginApp" class="container d-flex justify-content-center">
     <div class="col-4">
-        <form asp-controller="Login" asp-action="Entrar" method="post">
+        <form asp-controller="Login" asp-action="LoginAccess" method="post">
             <div class="mb-3">
                 <label for="login" class="form-label">Email - Login</label>
                 <input type="text" class="form-control" id="login" asp-for="Login" />
@@ -14,9 +14,10 @@
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" asp-for="Senha" />
-                @Html.ValidationMessageFor(user => user.Senha)
+                <input type="password" class="form-control" id="senha" asp-for="Password" />
+                @Html.ValidationMessageFor(user => user.Password)
             </div>
+            <p class="mb-3 text-sm mx-auto text-muted">Login: teste - Senha: 1234</p>
             <p class="mb-3 text-sm mx-auto"><a asp-action="RedefinePassword" asp-controller="Login" class="text-primary text-muted">Esqueceu a senha?</a></p>
                
             <button type="submit" class="btn btn-primary">Entrar</button>

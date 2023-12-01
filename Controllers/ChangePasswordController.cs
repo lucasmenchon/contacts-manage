@@ -7,12 +7,12 @@ namespace ContactsManage.Controllers
 {
     public class ChangePasswordController : Controller
     {
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
-        private readonly ISessao _sessao;
-        public ChangePasswordController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+        private readonly IUserRepository _userRepository;
+        private readonly Helper.ISession _session;
+        public ChangePasswordController(IUserRepository userRepository, Helper.ISession session)
         {
-            _usuarioRepositorio = usuarioRepositorio;
-            _sessao = sessao;
+            _userRepository = userRepository;
+            _session = session;
         }
 
         public IActionResult Index()
@@ -21,15 +21,15 @@ namespace ContactsManage.Controllers
         }
 
         [HttpPost]
-        public IActionResult Alterar(ChangePasswordModel changePasswordModel)
+        public IActionResult ChangePassword(ChangePassword changePasswordModel)
         {
             try
             {
-                UserModel userLogged = _sessao.BuscarSessaoUsuario();
+                User userLogged = _session.FindSession();
                 changePasswordModel.Id = userLogged.Id;
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepositorio.AlterarSenha(changePasswordModel);
+                    _userRepository.ChangePassword(changePasswordModel);
                     TempData["MsgSuccess"] = $"Senha alterada com sucesso!";
                     return View("Index", changePasswordModel);
                 }
@@ -41,6 +41,5 @@ namespace ContactsManage.Controllers
                 return View("Index", changePasswordModel);
             }
         }
-
     }
 }

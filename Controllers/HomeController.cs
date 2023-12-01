@@ -7,12 +7,12 @@ using System.Diagnostics;
 
 namespace ContactsManage.Controllers
 {
-    [PaginaUsuarioLogado]
+    [PageLoggedInUser]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;       
 
-        public HomeController(ILogger<HomeController> logger, ISessao sessao)
+        public HomeController(ILogger<HomeController> logger, Helper.ISession sessao)
         {
             _logger = logger;
         }
